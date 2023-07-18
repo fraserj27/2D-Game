@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/UserInterface/Title.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UserInterface/ChangeSceneButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=4]
+[ext_resource path="res://src/UserInterface/RetyButton.tscn" type="PackedScene" id=5]
+
+[node name="UserInterface" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -74.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = 22.0
+text = "Score: %s"
+align = 2
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.247059 )
+
+[node name="Title" parent="PauseOverlay" instance=ExtResource( 1 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -247.0
+margin_top = -321.0
+margin_right = 267.0
+margin_bottom = -264.0
+text = "Paused"
+
+[node name="PauseMenu" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -195.0
+margin_top = -206.0
+margin_right = 223.0
+margin_bottom = 122.0
+alignment = 1
+
+[node name="RetryButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 5 )]
+margin_right = 418.0
+margin_bottom = 106.0
+
+[node name="SceneChange" parent="PauseOverlay/PauseMenu" instance=ExtResource( 3 )]
+margin_top = 110.0
+margin_right = 418.0
+margin_bottom = 217.0
+text = "Main Screen"
+next_scene_path = "res://src/Screens/MainScreen.tscn "
+
+[node name="QuitButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 2 )]
+margin_top = 221.0
+margin_right = 418.0
+margin_bottom = 328.0
